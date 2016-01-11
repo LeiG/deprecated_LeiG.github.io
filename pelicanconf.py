@@ -26,8 +26,8 @@ AUTHOR_FEED_RSS = None
 #          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('linkedin', 'https://www.linkedin.com/in/imleigong'),
-          ('github', 'https://github.com/LeiG'),)
+SOCIAL = (('Linkedin', 'https://www.linkedin.com/in/imleigong'),
+          ('Github', 'https://github.com/LeiG'),)
 
 DEFAULT_PAGINATION = 10
 
