@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>用Pelican在Github上创建个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Lei Gong">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="/" type="application/atom+xml" rel="alternate" title="LeiG ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/index.html">LeiG </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li class="active">
+                    <a href="/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 用Pelican在Github上创建个人博客">
+                                        用Pelican在Github上创建个人博客
+                                </a>
+<a href="http://twitter.com/share" class="twitter-share-button"
+   data-count="horizontal" data-via="__LeiG__">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js">
+</script>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2016-01-01T17:25:00-08:00">
+        <i class="icon-calendar"></i>Fri 01 January 2016
+</abbr>
+<span class="label">By</span>
+<a href="/author/lei-gong.html"><i class="icon-user"></i>Lei Gong</a>
+<span class="label">Category</span>
+<a href="/category/misc.html"><i class="icon-folder-open"></i>misc</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/pelican.html"><i class="icon-tag"></i>pelican</a>
+	<a href="/tag/git.html"><i class="icon-tag"></i>git</a>
+</footer><!-- /.post-info -->                </div>
+                <p>2016年第一天，折腾了一个下午，终于在Github上建立好了自己的博客，希望从今年开始好好记录自己的学习过程，也能和大家多交流！开博第一篇就用来总结下我是如何用Pelican在Github上创建了这个博客，算是自己的一个回顾，要是凑巧能给和我一样的初学者提供一点帮助那真是额外的惊喜了。</p>
+<h2>Set up a github.io page</h2>
+<p>首先自然是要注册一个Github的账号。Github是目前最火的开源社区，它建立于git的基础之上，提供了方便的source control工具和一个强大的开源平台。目前，几乎你能在上面找到所有目前活跃的开源项目的repo。之外，它还给我们提供了Github Pages这样的平台来host我们的个人页面。</p>
+<p>要建立一个新的Github Page，我们第一步需要创建一个新的repo，并以username.github.io来命名。这样我们就方便的建立了一个Github User Page（另有Github Project Page， 感兴趣的朋友可以Google之）。</p>
+<p>Github User Page会display任何在master branch上的东西。这里我假设了大家都对git有初步的了解，如果觉得有困难可以花几分钟学习一下这个简短实用的<a href="https://try.github.io/levels/1/challenges/1">git教程</a>。为了方便后面的步骤，我们需要先新建并切换到一个新的git分支<code>source</code>，这也是以后我们主要的工作分支。</p>
+<div class="highlight"><pre><span class="nv">$ </span>git checkout -b <span class="nb">source</span>
+</pre></div>
+
+
+<h2>Install Pelican</h2>
+<p>Pelican是基于Python搭建的blog系统。我们可以简单的用<code>pip install</code>来完成安装，但是一个良好的开发习惯是把每个项目封装在自己的virtual environment里，这样会省去很多以后维护的麻烦。注意我用的版本是Python2.7，不过Python3应该也能用基本一样的办法安装。</p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install virtualenv
+<span class="nv">$ </span><span class="nb">cd </span>username.github.io/
+<span class="nv">$ </span>virtualenv venv
+<span class="nv">$ </span><span class="nb">source </span>venv/bin/activate
+</pre></div>
+
+
+<p>这样我们就建立并且激活了这个叫做<code>venv</code>的virtual environment了。你自然用不着commit这个文件夹，所以不要忘记把它添加到你的<code>.gitignore</code>里咯。</p>
+<p>接下来让我们正式来安装Pelican和一些必要的组件（注意我们已经在venv这个环境里了）。</p>
+<div class="highlight"><pre>(venv)$ pip install pelican markdown
+</pre></div>
+
+
+<p>非常幸运地，Pelican提供了一种非常简便的方式来新建一个项目，你只需要回答一些yes/no的问题就可以设置了。</p>
+<div class="highlight"><pre>(venv)$ pelican-quickstart
+</pre></div>
+
+
+<h2>Create your first post</h2>
+<p>一切就绪，现在我们终于可以来写第一篇博客了（以后就可以直接从这一步开始咯）。我喜欢用markdown这种格式来编辑博文，因为它非常简单而且轻巧。所有的<code>.md</code>后缀的博文都存在<code>content</code>这个文件夹下，用你最喜欢的编辑器新建一篇就可以了。</p>
+<div class="highlight"><pre>(venv)$ vim content/test.md
+</pre></div>
+
+
+<p>下面是一个比较实用的博文模版，你可以选择从这个格式开始。</p>
+<div class="highlight"><pre>My super title
+##############
+
+:date: 2010-10-03 10:20
+:modified: 2010-10-04 18:40
+:tags: thats, awesome
+:category: yeah
+:slug: my-super-post
+:authors: Alexis Metaireau, Conan Doyle
+:summary: Short version for index and feeds
+</pre></div>
+
+
+<p>写完了一篇博客，我们还需要重新generate整个site到<code>output</code>这个文件夹里。这一步也一贯的简单，在site的根目录下执行下面这行代码就可以了。</p>
+<div class="highlight"><pre>(venv)$ pelican content
+</pre></div>
+
+
+<h2>Commit to Github</h2>
+<p>完成了本地的编辑，最后一步是把内容push到master branch上，不过在这之前，我们还需要另外一个设置。因为Github User Page会display任何在master上的内容，而其实我们真正需要的只是<code>output</code>这个文件夹。当然你可以只push这个文件夹到master，但已经有一个非常好用的script能把这一步自动化了。</p>
+<div class="highlight"><pre>(venv)$ pip install ghp-import
+</pre></div>
+
+
+<p>有了这个script，我们只需要按次序执行下面这几行命令就可以把所有的东西都按类push到远程，而且我们的blog也会上线啦。</p>
+<div class="highlight"><pre><span class="p">(</span><span class="n">venv</span><span class="p">)</span><span class="err">$</span> <span class="n">git</span> <span class="n">branch</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span><span class="err">$</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="nn">output</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span><span class="err">$</span> <span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span><span class="err">$</span> <span class="n">git</span> <span class="n">merge</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span>
+<span class="p">(</span><span class="n">venv</span><span class="p">)</span><span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+
+
+<p>总结一下，我们最后有三个git分支，其中<code>source</code>是主要的工作分支，<code>master</code>是真正host博客的分支，<code>gp-pages</code>像是它们之间的搬运工。</p>
+<div class="highlight"><pre>  gh-pages
+  master
+* source
+</pre></div>
+
+
+<h2>Settings</h2>
+<p>这里我只是进行了一些最基本的设置，为了让你的博客更美观，更丰富，最主要的是更个性，你需要修改一下site根目录下的<code>pelicanconf.py</code>文件，也可以从<a href="https://github.com/farseerfc/pelican-themes">Github/pelican-themes</a>上选择一些主题。总之，有很多可以尝试和优化的，希望这篇能当作一个敲门砖。</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "set-up-github-page-with-pelican.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://lei-gong.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="https://www.linkedin.com/in/imleigong"><i class="icon-LinkedIn-sign icon-large"></i>LinkedIn</a></li>
+    <li><a href="https://github.com/LeiG"><i class="icon-Github-sign icon-large"></i>Github</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<li class="nav-header"><h4><i class="icon-twitter-sign"></i>Twitter</h4></li>
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 'auto',
+  height: 300,
+  theme: {
+	shell: {
+	  background: '#f5f5f5',
+	  color: '#000000'
+	},
+	tweets: {
+	  background: '#ffffff',
+	  color: '#000000',
+	  links: '#1a50a1'
+	}
+  },
+  features: {
+	scrollbar: false,
+	loop: false,
+	live: false,
+	behavior: 'all'
+  }
+}).render().setUser('__LeiG__').start();
+</script>
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'lei-gong';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
