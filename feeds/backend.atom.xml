@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>LeiG</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2016-01-17T22:00:00-08:00</updated><entry><title>手把手教你在SAE上部署及开发微信公众平台</title><link href="/deploy-wechat-platform-on-sae.html" rel="alternate"></link><updated>2016-01-17T22:00:00-08:00</updated><author><name>Lei Gong</name></author><id>tag:,2016-01-17:deploy-wechat-platform-on-sae.html</id><summary type="html">&lt;p&gt;微信公众平台为大家提供了一个优秀的流量入口，可惜目前自带的功能还十分有限，不过幸运的是它有相对成熟的API开发环境，给了我们搭建自己的消息处理服务器的机会。针对特定的用户，定制的消息处理和回复能够更加灵活和高效。本文将通过搭建一个公众号“Coco贴心美代”（需要代购的朋友们可以加哦，美女代购绝对靠谱），手把手教你如何在SAE（新浪的云平台）上部署基于Python Flask框架的消息服务器。目前，该公众号的主要功能是帮助用户查询快递状态（通过输入单号的形式），但整个框架非常容易扩展，可以说机会无限。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>LeiG</title><link href="/" rel="alternate"></link><link href="/feeds/backend.atom.xml" rel="self"></link><id>/</id><updated>2016-01-17T22:00:00-08:00</updated><entry><title>手把手教你在SAE上部署及开发微信公众平台</title><link href="/deploy-wechat-platform-on-sae.html" rel="alternate"></link><updated>2016-01-17T22:00:00-08:00</updated><author><name>Lei Gong</name></author><id>tag:,2016-01-17:deploy-wechat-platform-on-sae.html</id><summary type="html">&lt;p&gt;微信公众平台为大家提供了一个优秀的流量入口，可惜目前自带的功能还十分有限，不过幸运的是它有相对成熟的API开发环境，给了我们搭建自己的消息处理服务器的机会。针对特定的用户，定制的消息处理和回复能够更加灵活和高效。本文将通过搭建一个公众号“Coco贴心美代”（需要代购的朋友们可以加哦，美女代购绝对靠谱），手把手教你如何在SAE（新浪的云平台）上部署基于Python Flask框架的消息服务器。目前，该公众号的主要功能是帮助用户查询快递状态（通过输入单号的形式），但整个框架非常容易扩展，可以说机会无限。&lt;/p&gt;
 &lt;h2&gt;在SAE上创建空白Python应用&lt;/h2&gt;
 &lt;p&gt;首先，我们自然需要注册一个SAE的账号（需要通过新浪的身份验证，一般2~3天，不然会无法进行下面一步的微信验证），然后在“控制台 -&amp;gt; 云应用SAE”下面点击“创建新应用”，输入你想创建的应用名及二级域名（比如 http://coco1888888.applinzi.com ），并选择Python2.7的空应用。整个过程还算是比较简单，可以一气呵成。&lt;/p&gt;
 &lt;p&gt;SAE目前提供了三种代码管理的方式，即git，svn和代码打包上传，注意这个选项是不可更改的，所以还请慎重。作为世界上最大的程序员同性交友社区（ http://www.github.com ）的用户，我自然选择git作为代码管理的工具。除了代码打包上传，其余两种方式我认为都非常简单，选择纯凭个人喜好，并不强求。&lt;/p&gt;
@@ -160,81 +160,4 @@ $ git push sae master:1
 
 
 &lt;h2&gt;总结&lt;/h2&gt;
-&lt;p&gt;我们以一个订阅号“Coco贴心美代”为例，简单讲解了下如何用Python Flask框架在SAE上搭建微信公众号平台。本文略去了一些具体步骤，但整体上包括了所有部署和开发公众号的重要步骤，希望能帮助到有同样需要的朋友。最后依然厚颜无耻的打个广告，请去关注“Coco贴心美代”，绝对靠谱的美国代购！&lt;/p&gt;</summary><category term="python"></category><category term="flask"></category><category term="git"></category><category term="sae"></category><category term="wechat"></category></entry><entry><title>用Pelican在Github上创建个人博客</title><link href="/set-up-github-page-with-pelican.html" rel="alternate"></link><updated>2016-01-10T18:37:00-08:00</updated><author><name>Lei Gong</name></author><id>tag:,2016-01-01:set-up-github-page-with-pelican.html</id><summary type="html">&lt;p&gt;2016年第一天，折腾了一个下午，终于在Github上建立好了自己的博客，希望从今年开始好好记录自己的学习过程，也能和大家多交流！开博第一篇就用来总结下我是如何用Pelican在Github上创建了这个博客，算是自己的一个回顾，要是凑巧能给和我一样的初学者提供一点帮助那真是额外的惊喜了。&lt;/p&gt;
-&lt;h2&gt;Set up a github.io page&lt;/h2&gt;
-&lt;p&gt;首先自然是要注册一个Github的账号。Github是目前最火的开源社区，它建立于git的基础之上，提供了方便的source control工具和一个强大的开源平台。目前，几乎你能在上面找到所有目前活跃的开源项目的repo。之外，它还给我们提供了Github Pages这样的平台来host我们的个人页面。&lt;/p&gt;
-&lt;p&gt;要建立一个新的Github Page，我们第一步需要创建一个新的repo，并以username.github.io来命名。这样我们就方便的建立了一个Github User Page（另有Github Project Page， 感兴趣的朋友可以Google之）。&lt;/p&gt;
-&lt;p&gt;Github User Page会display任何在master branch上的东西。这里我假设了大家都对git有初步的了解，如果觉得有困难可以花几分钟学习一下这个简短实用的&lt;a href="https://try.github.io/levels/1/challenges/1"&gt;git教程&lt;/a&gt;。为了方便后面的步骤，我们需要先新建并切换到一个新的git分支&lt;code&gt;source&lt;/code&gt;，这也是以后我们主要的工作分支。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Install Pelican&lt;/h2&gt;
-&lt;p&gt;Pelican是基于Python搭建的blog系统。我们可以简单的用&lt;code&gt;pip install&lt;/code&gt;来完成安装，但是一个良好的开发习惯是把每个项目封装在自己的virtual environment里，这样会省去很多以后维护的麻烦。注意我用的版本是Python2.7，不过Python3应该也能用基本一样的办法安装。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;$ pip install virtualenv
-$ &lt;span class="nb"&gt;cd&lt;/span&gt; username.github.io/
-$ virtualenv venv
-$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;这样我们就建立并且激活了这个叫做&lt;code&gt;venv&lt;/code&gt;的virtual environment了。你自然用不着commit这个文件夹，所以不要忘记把它添加到你的&lt;code&gt;.gitignore&lt;/code&gt;里咯。&lt;/p&gt;
-&lt;p&gt;接下来让我们正式来安装Pelican和一些必要的组件（注意我们已经在venv这个环境里了）。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;(venv)$ pip install pelican markdown
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;非常幸运地，Pelican提供了一种非常简便的方式来新建一个项目，你只需要回答一些yes/no的问题就可以设置了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;(venv)$ pelican-quickstart
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Create your first post&lt;/h2&gt;
-&lt;p&gt;一切就绪，现在我们终于可以来写第一篇博客了（以后就可以直接从这一步开始咯）。我喜欢用markdown这种格式来编辑博文，因为它非常简单而且轻巧。所有的&lt;code&gt;.md&lt;/code&gt;后缀的博文都存在&lt;code&gt;content&lt;/code&gt;这个文件夹下，用你最喜欢的编辑器新建一篇就可以了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;(venv)$ vim content/test.md
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;下面是一个比较实用的博文模版，你可以选择从这个格式开始。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;My super title
-##############
-
-:date: 2010-10-03 10:20
-:modified: 2010-10-04 18:40
-:tags: thats, awesome
-:category: yeah
-:slug: my-super-post
-:authors: Alexis Metaireau, Conan Doyle
-:summary: Short version for index and feeds
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;写完了一篇博客，我们还需要重新generate整个site到&lt;code&gt;output&lt;/code&gt;这个文件夹里。这一步也一贯的简单，在site的根目录下执行下面这行代码就可以了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;(venv)$ pelican content
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Commit to Github&lt;/h2&gt;
-&lt;p&gt;完成了本地的编辑，最后一步是把内容push到master branch上，不过在这之前，我们还需要另外一个设置。因为Github User Page会display任何在master上的内容，而其实我们真正需要的只是&lt;code&gt;output&lt;/code&gt;这个文件夹。当然你可以只push这个文件夹到master，但已经有一个非常好用的script能把这一步自动化了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;(venv)$ pip install ghp-import
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;有了这个script，我们只需要按次序执行下面这几行命令就可以把所有的东西都按类push到远程，而且我们的blog也会上线啦。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt; &lt;span class="n"&gt;gh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;output&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;checkout&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;merge&lt;/span&gt; &lt;span class="n"&gt;gh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pages&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="nb"&gt;all&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;总结一下，我们最后有三个git分支，其中&lt;code&gt;source&lt;/code&gt;是主要的工作分支，&lt;code&gt;master&lt;/code&gt;是真正host博客的分支，&lt;code&gt;gp-pages&lt;/code&gt;像是它们之间的搬运工。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;  gh-pages
-  master
-* source
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Settings&lt;/h2&gt;
-&lt;p&gt;这里我只是进行了一些最基本的设置，为了让你的博客更美观，更丰富，最主要的是更个性，你需要修改一下site根目录下的&lt;code&gt;pelicanconf.py&lt;/code&gt;文件，也可以从&lt;a href="https://github.com/farseerfc/pelican-themes"&gt;Github/pelican-themes&lt;/a&gt;上选择一些主题。总之，有很多可以尝试和优化的，希望这篇能当作一个敲门砖。&lt;/p&gt;</summary><category term="pelican"></category><category term="git"></category></entry></feed>
+&lt;p&gt;我们以一个订阅号“Coco贴心美代”为例，简单讲解了下如何用Python Flask框架在SAE上搭建微信公众号平台。本文略去了一些具体步骤，但整体上包括了所有部署和开发公众号的重要步骤，希望能帮助到有同样需要的朋友。最后依然厚颜无耻的打个广告，请去关注“Coco贴心美代”，绝对靠谱的美国代购！&lt;/p&gt;</summary><category term="python"></category><category term="flask"></category><category term="git"></category><category term="sae"></category><category term="wechat"></category></entry></feed>

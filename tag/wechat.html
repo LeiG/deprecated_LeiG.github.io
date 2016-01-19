@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>LeiG</title>
+    <title>LeiG - wechat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Lei Gong">
@@ -89,16 +89,35 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-<section id="content">
-<h1>Archives for LeiG</h1>
+        <div class="article">
+                <h1><a href="/deploy-wechat-platform-on-sae.html">手把手教你在SAE上部署及开发微信公众平台</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2016-01-17T22:00:00-08:00">
+        <i class="icon-calendar"></i>Sun 17 January 2016
+</abbr>
+<span class="label">By</span>
+<a href="/author/lei-gong.html"><i class="icon-user"></i>Lei Gong</a>
+<span class="label">Category</span>
+<a href="/category/backend.html"><i class="icon-folder-open"></i>backend</a>.
 
-<dl>
-	<dt>Sun 17 January 2016</dt>
-	<dd><a href='deploy-wechat-platform-on-sae.html'>手把手教你在SAE上部署及开发微信公众平台</a></dd>
-	<dt>Fri 01 January 2016</dt>
-	<dd><a href='set-up-github-page-with-pelican.html'>用Pelican在Github上创建个人博客</a></dd>
-</dl>
-</section>
+
+<span class="label">Tags</span>
+	<a href="/tag/python.html"><i class="icon-tag"></i>python</a>
+	<a href="/tag/flask.html"><i class="icon-tag"></i>flask</a>
+	<a href="/tag/git.html"><i class="icon-tag"></i>git</a>
+	<a href="/tag/sae.html"><i class="icon-tag"></i>sae</a>
+	<a href="/tag/wechat.html"><i class="icon-tag"></i>wechat</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>微信公众平台为大家提供了一个优秀的流量入口，可惜目前自带的功能还十分有限，不过幸运的是它有相对成熟的API开发环境，给了我们搭建自己的消息处理服务器的机会。针对特定的用户，定制的消息处理和回复能够更加灵活和高效。本文将通过搭建一个公众号“Coco贴心美代”（需要代购的朋友们可以加哦，美女代购绝对靠谱），手把手教你如何在SAE（新浪的云平台）上部署基于Python Flask框架的消息服务器。目前，该公众号的主要功能是帮助用户查询快递状态（通过输入单号的形式），但整个框架非常容易扩展，可以说机会无限。</p>
+<h2>在SAE上创建空白Python应用</h2>
+<p>首先，我们自然需要注册一个SAE的账号（需要通过新浪的身份验证，一般2~3天，不然会无法进行下面一步的微信验证），然后在“控制台 -&gt; 云应用SAE”下面点击“创建新应用”，输入你想创建的应用名及二级域名（比如 http://coco1888888.applinzi.com ），并选择Python2.7的空应用。整个过程还算是比较简单，可以一气呵成。</p>
+<p>SAE目前提供了三种代码管理的方式，即git，svn和代码打包上传，注意这个选项是不可更改的，所以还请慎重。作为世界上最大的程序员同性交友社区（ http://www.github ...</p>
+                        <a class="btn primary xsmall" href="/deploy-wechat-platform-on-sae.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">

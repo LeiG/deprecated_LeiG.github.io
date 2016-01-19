@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>手把手教你在SAE上部署及开发微信公众平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Lei Gong">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="/" type="application/atom+xml" rel="alternate" title="LeiG ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/index.html">LeiG </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li class="active">
+                    <a href="/category/backend.html">
+						<i class="icon-folder-open icon-large"></i>backend
+					</a>
+                  </li>
+                  <li >
+                    <a href="/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 手把手教你在SAE上部署及开发微信公众平台">
+                                        手把手教你在SAE上部署及开发微信公众平台
+                                </a>
+<a href="http://twitter.com/share" class="twitter-share-button"
+   data-count="horizontal" data-via="__LeiG__">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js">
+</script>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2016-01-17T22:00:00-08:00">
+        <i class="icon-calendar"></i>Sun 17 January 2016
+</abbr>
+<span class="label">By</span>
+<a href="/author/lei-gong.html"><i class="icon-user"></i>Lei Gong</a>
+<span class="label">Category</span>
+<a href="/category/backend.html"><i class="icon-folder-open"></i>backend</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/python.html"><i class="icon-tag"></i>python</a>
+	<a href="/tag/flask.html"><i class="icon-tag"></i>flask</a>
+	<a href="/tag/git.html"><i class="icon-tag"></i>git</a>
+	<a href="/tag/sae.html"><i class="icon-tag"></i>sae</a>
+	<a href="/tag/wechat.html"><i class="icon-tag"></i>wechat</a>
+</footer><!-- /.post-info -->                </div>
+                <p>微信公众平台为大家提供了一个优秀的流量入口，可惜目前自带的功能还十分有限，不过幸运的是它有相对成熟的API开发环境，给了我们搭建自己的消息处理服务器的机会。针对特定的用户，定制的消息处理和回复能够更加灵活和高效。本文将通过搭建一个公众号“Coco贴心美代”（需要代购的朋友们可以加哦，美女代购绝对靠谱），手把手教你如何在SAE（新浪的云平台）上部署基于Python Flask框架的消息服务器。目前，该公众号的主要功能是帮助用户查询快递状态（通过输入单号的形式），但整个框架非常容易扩展，可以说机会无限。</p>
+<h2>在SAE上创建空白Python应用</h2>
+<p>首先，我们自然需要注册一个SAE的账号（需要通过新浪的身份验证，一般2~3天，不然会无法进行下面一步的微信验证），然后在“控制台 -&gt; 云应用SAE”下面点击“创建新应用”，输入你想创建的应用名及二级域名（比如 http://coco1888888.applinzi.com ），并选择Python2.7的空应用。整个过程还算是比较简单，可以一气呵成。</p>
+<p>SAE目前提供了三种代码管理的方式，即git，svn和代码打包上传，注意这个选项是不可更改的，所以还请慎重。作为世界上最大的程序员同性交友社区（ http://www.github.com ）的用户，我自然选择git作为代码管理的工具。除了代码打包上传，其余两种方式我认为都非常简单，选择纯凭个人喜好，并不强求。</p>
+<p>选择了git以后，你只需要在本地建立一个开发目录，创建两个配置文件，然后添加一个远程仓库sae就可以啦。详细的文档可以查看<a href="http://www.sinacloud.com/doc/sae/python/index.html">SAE Python指南</a>。</p>
+<div class="highlight"><pre>$ <span class="nb">cd</span> coco
+$ git init
+$ touch config.yaml index.wsgi
+$ git add .
+$ git commit -m <span class="s2">&quot;initial commit&quot;</span>
+</pre></div>
+
+
+<p>这些都算是常规的git初始化步骤，唯一略有不同的是添加远程仓库sae。我特意把代码分开，以防你错过关键步骤。</p>
+<div class="highlight"><pre>$ git remote add sae https://git.sinacloud.com/coco1888888/
+$ git push sae master:1
+</pre></div>
+
+
+<p>此处还需要注意一点，SAE是允许一个应用的不同版本号同时运行的，<code>master:1</code>即表明这是第一个版本，那自然你也可以部署第二个版本，通过命令<code>git push sae master:2</code>。</p>
+<p>到此为止，SAE上的准备工作就做好啦，现在让我们开始开发微信公众号的消息处理吧。</p>
+<h2>申请微信公众平台</h2>
+<p>当然，你首先需要申请一个微信公众号。现在微信公众号分两大类，即订阅号和服务号。作为个人，没有什么特殊要求（比如支付）的话，比较容易的是申请一个订阅号，只需要几天时间审核就可以了。在这个等待期间，刚好可以阅读下微信的<a href="http://mp.weixin.qq.com/wiki/home/index.html">开发者文档</a>，对大概的接口情况有些了解。</p>
+<p>审核完毕以后，我们需要改变一些基本配置，并开启开发模式。具体操作如下：进入基本配置 -&gt; 修改配置 -&gt; 填URL（服务器地址）：http://coco1888888.applinzi.com/wechat （注意我在开始申请的SAE路径下加了一个子路径<code>/wechat</code>专门服务微信平台，这样为以后另外建立主页留下了空间）-&gt; Token: coco1888888 （用于接口验证，需要先进行下一步，即验证微信平台接口，不然会提示错误）-&gt; 设置秘钥和加密方式 -&gt; 开启开发模式。</p>
+<h2>验证微信公众平台接口</h2>
+<p>为了和微信顺利对接来开启开发模式，我们需要处理微信服务器的验证消息。微信会发送一条HTTP GET请求来对URL进行验证，GET请求携带四个参数<code>signature</code>, <code>timestamp</code>, <code>nonce</code>, <code>echostr</code>（详情请戳<a href="http://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">官方指南</a>）。</p>
+<div class="highlight"><pre>加密/校验流程：
+1. 将token, timestamp, nonce三个参数进行字典序排序
+2. 将三个参数字符串拼接成一个字符串进行sha1加密
+3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
+</pre></div>
+
+
+<p>下面贴一段我用Python Flask写的示例。</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">make_response</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="k">def</span> <span class="nf">access_verification</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;coco1888888&#39;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span>
+    <span class="n">signature</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;signature&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">nonce</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nonce&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">nonce</span><span class="p">,</span> <span class="n">token</span><span class="p">]</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">hash_str</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span>
+
+    <span class="k">if</span> <span class="n">hash_str</span> <span class="o">==</span> <span class="n">signature</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/wechat&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">wechat_auth</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">echostr</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;echostr&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">access_verification</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="ow">and</span> <span class="n">echostr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">echostr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;Access Verification Failed&#39;</span>
+</pre></div>
+
+
+<p>非常简单的一段代码，注意我把微信的接口放在了子路径<code>/wechat</code>下。这是为了以后这个消息处理服务和整个网页端放在一个路径下。</p>
+<p>除了接口验证，我们还需要把<code>config.yaml</code>和<code>index.wsgi</code>按照如下设置。</p>
+<p><strong>config.yaml</strong></p>
+<div class="highlight"><pre><span class="n">name</span><span class="o">:</span> <span class="n">coco1888888</span>
+<span class="n">version</span><span class="o">:</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p><strong>index.wsgi</strong></p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sae</span>
+<span class="kn">from</span> <span class="nn">coco</span> <span class="kn">import</span> <span class="n">append</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">sae</span><span class="o">.</span><span class="n">create_wsgi_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</pre></div>
+
+
+<p>这样总算大功告成，微信能够验证URL，我们也能够开启开发模式啦。</p>
+<h2>消息推送和回复</h2>
+<p>准备工作总算结束，下面我们将进入核心内容，也就是消息推送和回复用户的发送的消息。这个地方主要是分两个方向：
+1. 接受事件推送并回复
+2. 接受普通消息并回复</p>
+<h3>接受事件推送并回复</h3>
+<p>这里我们主要考虑当用户关注订阅号时，我们推送一条“欢迎订阅”的问候和订阅号的使用规则。具体收到微信推送的xml数据包会是下面这种格式的，注意这里的<code>MsgType = event</code>以及<code>event = subscribe</code>。</p>
+<div class="highlight"><pre><span class="nt">&lt;xml&gt;</span>
+<span class="nt">&lt;ToUserName&gt;</span><span class="cp">&lt;![CDATA[toUser]]&gt;</span><span class="nt">&lt;/ToUserName&gt;</span>
+<span class="nt">&lt;FromUserName&gt;</span><span class="cp">&lt;![CDATA[FromUser]]&gt;</span><span class="nt">&lt;/FromUserName&gt;</span>
+<span class="nt">&lt;CreateTime&gt;</span>123456789<span class="nt">&lt;/CreateTime&gt;</span>
+<span class="nt">&lt;MsgType&gt;</span><span class="cp">&lt;![CDATA[event]]&gt;</span><span class="nt">&lt;/MsgType&gt;</span>
+<span class="nt">&lt;Event&gt;</span><span class="cp">&lt;![CDATA[subscribe]]&gt;</span><span class="nt">&lt;/Event&gt;</span>
+<span class="nt">&lt;/xml&gt;</span>
+</pre></div>
+
+
+<h3>接受普通消息并回复</h3>
+<p>按照我们第一个版本的设计，用户发送一个tracking number给订阅号后，将获得快递状态的更新。这里自然涉及到一个网络爬虫的问题，不过因为不是本文重点，就不在此展开了。我们需要关注的是用户发送消息，以及订阅号回复消息的xml数据包格式，注意这里的<code>MsgType = text</code>。</p>
+<p><strong>接受文本消息</strong></p>
+<div class="highlight"><pre><span class="nt">&lt;xml&gt;</span>
+<span class="nt">&lt;ToUserName&gt;</span><span class="cp">&lt;![CDATA[toUser]]&gt;</span><span class="nt">&lt;/ToUserName&gt;</span>
+<span class="nt">&lt;FromUserName&gt;</span><span class="cp">&lt;![CDATA[fromUser]]&gt;</span><span class="nt">&lt;/FromUserName&gt;</span> 
+<span class="nt">&lt;CreateTime&gt;</span>1348831860<span class="nt">&lt;/CreateTime&gt;</span>
+<span class="nt">&lt;MsgType&gt;</span><span class="cp">&lt;![CDATA[text]]&gt;</span><span class="nt">&lt;/MsgType&gt;</span>
+<span class="nt">&lt;Content&gt;</span><span class="cp">&lt;![CDATA[this is a test]]&gt;</span><span class="nt">&lt;/Content&gt;</span>
+<span class="nt">&lt;MsgId&gt;</span>1234567890123456<span class="nt">&lt;/MsgId&gt;</span>
+<span class="nt">&lt;/xml&gt;</span>
+</pre></div>
+
+
+<p><strong>回复文本消息</strong></p>
+<div class="highlight"><pre><span class="nt">&lt;xml&gt;</span>
+<span class="nt">&lt;ToUserName&gt;</span><span class="cp">&lt;![CDATA[toUser]]&gt;</span><span class="nt">&lt;/ToUserName&gt;</span>
+<span class="nt">&lt;FromUserName&gt;</span><span class="cp">&lt;![CDATA[fromUser]]&gt;</span><span class="nt">&lt;/FromUserName&gt;</span>
+<span class="nt">&lt;CreateTime&gt;</span>12345678<span class="nt">&lt;/CreateTime&gt;</span>
+<span class="nt">&lt;MsgType&gt;</span><span class="cp">&lt;![CDATA[text]]&gt;</span><span class="nt">&lt;/MsgType&gt;</span>
+<span class="nt">&lt;Content&gt;</span><span class="cp">&lt;![CDATA[你好]]&gt;</span><span class="nt">&lt;/Content&gt;</span>
+<span class="nt">&lt;/xml&gt;</span>
+</pre></div>
+
+
+<p>无论是推送消息还是普通消息，我们都需要对微信发来的xml数据包进行处理。我们可以通过一个<code>message_parser</code>函数来实现从xml数据包到Python dict的转换。</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">ET</span>
+
+<span class="k">def</span> <span class="nf">message_parser</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">root</span><span class="p">:</span>
+        <span class="n">msg</span><span class="p">[</span><span class="n">child</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">return</span> <span class="n">msg</span>
+</pre></div>
+
+
+<p>把现在手头上的东西整合起来，我们就有了一个可以和用户互动的订阅号啦（注意下面有两个函数<code>get_reply</code>和<code>response_text_msg</code>是缺失的，是因为涉及到business logic或者逻辑比较简单）。</p>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/wechat&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">wechat_auth</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">echostr</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;echostr&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">access_verification</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="ow">and</span> <span class="n">echostr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span><span class="n">echostr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;Access Verification Failed&#39;</span>
+
+    <span class="c1"># get data and respond</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="n">message_parser</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;MsgType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">get_reply</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">response_text_msg</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span>
+    <span class="k">elif</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;MsgType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;event&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;Event&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;subscribe&#39;</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">response_text_msg</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">SUBSCRIBE_MESSAGE</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span>
+        <span class="k">return</span> <span class="s2">&quot;Message Response Failed&quot;</span>
+</pre></div>
+
+
+<h2>总结</h2>
+<p>我们以一个订阅号“Coco贴心美代”为例，简单讲解了下如何用Python Flask框架在SAE上搭建微信公众号平台。本文略去了一些具体步骤，但整体上包括了所有部署和开发公众号的重要步骤，希望能帮助到有同样需要的朋友。最后依然厚颜无耻的打个广告，请去关注“Coco贴心美代”，绝对靠谱的美国代购！</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "deploy-wechat-platform-on-sae.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://lei-gong.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="https://www.linkedin.com/in/imleigong"><i class="icon-Linkedin-sign icon-large"></i>Linkedin</a></li>
+    <li><a href="https://github.com/LeiG"><i class="icon-Github-sign icon-large"></i>Github</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="/category/backend.html">
+    <i class="icon-folder-open icon-large"></i>backend
+</a>
+</li>
+<li>
+<a href="/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<li class="nav-header"><h4><i class="icon-twitter-sign"></i>Twitter</h4></li>
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 30000,
+  width: 'auto',
+  height: 300,
+  theme: {
+	shell: {
+	  background: '#f5f5f5',
+	  color: '#000000'
+	},
+	tweets: {
+	  background: '#ffffff',
+	  color: '#000000',
+	  links: '#1a50a1'
+	}
+  },
+  features: {
+	scrollbar: false,
+	loop: false,
+	live: false,
+	behavior: 'all'
+  }
+}).render().setUser('__LeiG__').start();
+</script>
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'lei-gong';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
