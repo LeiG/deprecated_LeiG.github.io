@@ -135,7 +135,7 @@ $ git push sae master:1
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;把现在手头上的东西整合起来，我们就有了一个可以和用户互动的订阅号啦（注意下面有两个函数&lt;code&gt;get_reply&lt;/code&gt;和&lt;code&gt;response_text_msg&lt;/code&gt;是缺失的，是因为涉及到business logic或者逻辑比较简单）。&lt;/p&gt;
+&lt;p&gt;把现在手头上的东西整合起来，我们就有了一个可以和用户互动的订阅号啦（注意下面有一个函数&lt;code&gt;get_reply&lt;/code&gt;是缺失的，这是因为涉及到business logic，你可以用任何的字符串来替代）。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/wechat&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;wechat_auth&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;

@@ -256,7 +256,7 @@ $ git push sae master:1
 </pre></div>
 
 
-<p>把现在手头上的东西整合起来，我们就有了一个可以和用户互动的订阅号啦（注意下面有两个函数<code>get_reply</code>和<code>response_text_msg</code>是缺失的，是因为涉及到business logic或者逻辑比较简单）。</p>
+<p>把现在手头上的东西整合起来，我们就有了一个可以和用户互动的订阅号啦（注意下面有一个函数<code>get_reply</code>是缺失的，这是因为涉及到business logic，你可以用任何的字符串来替代）。</p>
 <div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/wechat&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">wechat_auth</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
