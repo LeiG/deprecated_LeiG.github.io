@@ -277,6 +277,29 @@ $ git push sae master:1
             <span class="n">response</span> <span class="o">=</span> <span class="n">response_text_msg</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">SUBSCRIBE_MESSAGE</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">response</span>
         <span class="k">return</span> <span class="s2">&quot;Message Response Failed&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">response_text_msg</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="n">text_template</span> <span class="o">=</span> \
+    <span class="s2">&quot;&lt;xml&gt;&quot;</span>\
+    <span class="s2">&quot;&lt;ToUserName&gt;&lt;![CDATA[</span><span class="si">%s</span><span class="s2">]]&gt;&lt;/ToUserName&gt;&quot;</span>\
+    <span class="s2">&quot;&lt;FromUserName&gt;&lt;![CDATA[</span><span class="si">%s</span><span class="s2">]]&gt;&lt;/FromUserName&gt;&quot;</span>\
+    <span class="s2">&quot;&lt;CreateTime&gt;</span><span class="si">%s</span><span class="s2">&lt;/CreateTime&gt;&quot;</span>\
+    <span class="s2">&quot;&lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;&quot;</span>\
+    <span class="s2">&quot;&lt;Content&gt;&lt;![CDATA[</span><span class="si">%s</span><span class="s2">]]&gt;&lt;/Content&gt;&quot;</span>\
+    <span class="s2">&quot;&lt;/xml&gt;&quot;</span>
+
+    <span class="n">receiver_name</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;FromUserName&#39;</span><span class="p">]</span>
+    <span class="n">sender_name</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;ToUserName&#39;</span><span class="p">]</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+
+    <span class="n">response</span> <span class="o">=</span>  <span class="n">text_template</span> <span class="o">%</span> <span class="p">(</span><span class="n">receiver_name</span><span class="p">,</span>
+                                 <span class="n">sender_name</span><span class="p">,</span>
+                                 <span class="n">create_time</span><span class="p">,</span>
+                                 <span class="n">content</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">content_type</span> <span class="o">=</span> <span class="s1">&#39;application/xml&#39;</span>
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 
 
