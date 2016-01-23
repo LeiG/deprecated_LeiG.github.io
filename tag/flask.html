@@ -1,179 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en"
+>
+<head>
+    <title>flask - LeiG</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <title>LeiG - flask</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Lei Gong">
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="/theme/css/font-awesome.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="/theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png">
+    <meta name="author" content="Lei Gong" />
+    <meta name="keywords" content="flask" />
 
-    <link href="/" type="application/atom+xml" rel="alternate" title="LeiG ATOM Feed" />
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="LeiG" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="LeiG"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="LeiG"/>
 
-  </head>
 
-  <body>
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/index.html">LeiG </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-                  <li >
-                    <a href="/category/backend.html">
-						<i class="icon-folder-open icon-large"></i>backend
-					</a>
-                  </li>
-                  <li >
-                    <a href="/category/misc.html">
-						<i class="icon-folder-open icon-large"></i>misc
-					</a>
-                  </li>
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
-                          <ul class="nav pull-right">
-                                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
-                          </ul>
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="LeiG ATOM Feed"/>
 
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+LeiG            </a>
         </div>
-      </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/backend.html">Backend</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="/deploy-wechat-platform-on-sae.html">手把手教你在SAE上部署及开发微信公众平台</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2016-01-17T22:00:00-08:00">
-        <i class="icon-calendar"></i>Sun 17 January 2016
-</abbr>
-<span class="label">By</span>
-<a href="/author/lei-gong.html"><i class="icon-user"></i>Lei Gong</a>
-<span class="label">Category</span>
-<a href="/category/backend.html"><i class="icon-folder-open"></i>backend</a>.
-
-
-<span class="label">Tags</span>
-	<a href="/tag/python.html"><i class="icon-tag"></i>python</a>
-	<a href="/tag/flask.html"><i class="icon-tag"></i>flask</a>
-	<a href="/tag/git.html"><i class="icon-tag"></i>git</a>
-	<a href="/tag/sae.html"><i class="icon-tag"></i>sae</a>
-	<a href="/tag/wechat.html"><i class="icon-tag"></i>wechat</a>
-</footer><!-- /.post-info --></div>
+            <article>
+                <h2><a href="/deploy-wechat-platform-on-sae.html">手把手教你在SAE上部署及开发微信公众平台</a></h2>
                 <div class="summary"><p>微信公众平台为大家提供了一个优秀的流量入口，可惜目前自带的功能还十分有限，不过幸运的是它有相对成熟的API开发环境，给了我们搭建自己的消息处理服务器的机会。针对特定的用户，定制的消息处理和回复能够更加灵活和高效。本文将通过搭建一个公众号“Coco贴心美代”（需要代购的朋友们可以加哦，美女代购绝对靠谱），手把手教你如何在SAE（新浪的云平台）上部署基于Python Flask框架的消息服务器。目前，该公众号的主要功能是帮助用户查询快递状态（通过输入单号的形式），但整个框架非常容易扩展，可以说机会无限。</p>
 <h2>在SAE上创建空白Python应用</h2>
 <p>首先，我们自然需要注册一个SAE的账号（需要通过新浪的身份验证，一般2~3天，不然会无法进行下面一步的微信验证），然后在“控制台 -&gt; 云应用SAE”下面点击“创建新应用”，输入你想创建的应用名及二级域名（比如 http://coco1888888.applinzi.com ），并选择Python2.7的空应用。整个过程还算是比较简单，可以一气呵成。</p>
 <p>SAE目前提供了三种代码管理的方式，即git，svn和代码打包上传，注意这个选项是不可更改的，所以还请慎重。作为世界上最大的程序员同性交友社区（ http://www.github ...</p>
-                        <a class="btn primary xsmall" href="/deploy-wechat-platform-on-sae.html">more ...</a>
+                    <a class="btn btn-default btn-xs" href="/deploy-wechat-platform-on-sae.html">more ...</a>
                 </div>
+            </article>
+            <hr/>
+
         </div>
-        <hr />
+        <div class="col-sm-3" id="sidebar">
+            <aside>
 
-        </div><!--/span-->
-
-                <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
-<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
-<li><a href="/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
-    <li><a href="https://www.linkedin.com/in/imleigong"><i class="icon-Linkedin-sign icon-large"></i>Linkedin</a></li>
-    <li><a href="https://github.com/LeiG"><i class="icon-Github-sign icon-large"></i>Github</a></li>
-
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="/category/backend.html">
-    <i class="icon-folder-open icon-large"></i>backend
-</a>
-</li>
-<li>
-<a href="/category/misc.html">
-    <i class="icon-folder-open icon-large"></i>misc
-</a>
-</li>
-
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/in/imleigong"><i class="fa fa-linkedin-square fa-lg"></i> Linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/LeiG"><i class="fa fa-github-square fa-lg"></i> Github</a></li>
+                <li class="list-group-item"><a href="mailto:LeiG.inbox@gmail.com"><i class="fa fa-email-square fa-lg"></i> Email</a></li>
+              </ul>
+            </li>
 
 
-</ul>        </div><!--/.well -->
 
-      </div><!--/row-->
-
+            <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                </ul>
+            </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
       <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Lei Gong
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
 
-      <footer>
-        <address id="about">
-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
-        </address><!-- /#about -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
 
-        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
-      </footer>
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
 
-    </div><!--/.fluid-container-->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'lei-gong'; // required: replace example with your forum shortname
 
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
 
-<script type="text/javascript">
-    var disqus_shortname = 'lei-gong';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/theme/js/jquery-1.7.2.min.js"></script>
-    <script src="/theme/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
