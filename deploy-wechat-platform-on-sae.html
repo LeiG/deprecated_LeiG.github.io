@@ -10,7 +10,7 @@
 
 
 
-<link rel="canonical" href="/deploy-wechat-platform-on-sae.html">
+<link rel="canonical" href="http://leig.github.io/deploy-wechat-platform-on-sae.html">
 
         <meta name="author" content="Lei Gong" />
         <meta name="keywords" content="python,flask,git,sae,wechat" />
@@ -19,7 +19,7 @@
         <meta property="og:site_name" content="LeiG" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="手把手教你在SAE上部署及开发微信公众平台"/>
-        <meta property="og:url" content="/deploy-wechat-platform-on-sae.html"/>
+        <meta property="og:url" content="http://leig.github.io/deploy-wechat-platform-on-sae.html"/>
         <meta property="og:description" content="微信公众平台为大家提供了一个优秀的流量入口，可惜目前自带的功能还十分有限，不过幸运的是它有相对成熟的API开发环境，给了我们搭建自己的消息处理服务器的机会。针对特定的用户，定制的消息处理和回复能够更加灵活和高效。本文将通过搭建一个公众号“Coco贴心美代”（需要代购的朋友们可以加哦，美女代购绝对靠谱），手把手教你如何在SAE（新浪的云平台）上部署基于Python Flask框架的消息服务器。目前，该公众号的主要功能是帮助用户查询快递状态（通过输入单号的形式），但整个框架非常容易扩展，可以说机会无限。 在SAE上创建空白Python应用 首先，我们自然需要注册一个SAE的账号（需要通过新浪的身份验证，一般2~3天，不然会无法进行下面一步的微信验证），然后在“控制台 -&gt; 云应用SAE”下面点击“创建新应用”，输入你想创建的应用名及二级域名（比如 http://coco1888888.applinzi.com ），并选择Python2.7的空应用。整个过程还算是比较简单，可以一气呵成。 SAE目前提供了三种代码管理的方式，即git，svn和代码打包上传，注意这个选项是不可更改的，所以还请慎重。作为世界上最大的程序员同性交友社区（ http://www.github ..."/>
         <meta property="article:published_time" content="2016-01-17" />
             <meta property="article:section" content="backend" />
@@ -32,13 +32,13 @@
 
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://leig.github.io/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://leig.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+    <link href="http://leig.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://leig.github.io/theme/css/style.css" type="text/css"/>
 
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="http://leig.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="LeiG ATOM Feed"/>
 
 </head>
@@ -53,20 +53,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand">
+            <a href="http://leig.github.io/" class="navbar-brand">
 LeiG            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="/category/backend.html">Backend</a>
+                            <a href="http://leig.github.io/category/backend.html">Backend</a>
                         </li>
                         <li >
-                            <a href="/category/misc.html">Misc</a>
+                            <a href="http://leig.github.io/category/misc.html">Misc</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+              <li><a href="http://leig.github.io/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -82,7 +82,7 @@ LeiG            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/deploy-wechat-platform-on-sae.html"
+                    <a href="http://leig.github.io/deploy-wechat-platform-on-sae.html"
                        rel="bookmark"
                        title="Permalink to 手把手教你在SAE上部署及开发微信公众平台">
                         手把手教你在SAE上部署及开发微信公众平台
@@ -101,15 +101,15 @@ LeiG            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="/tag/python.html">python</a>
+	<a href="http://leig.github.io/tag/python.html">python</a>
         /
-	<a href="/tag/flask.html">flask</a>
+	<a href="http://leig.github.io/tag/flask.html">flask</a>
         /
-	<a href="/tag/git.html">git</a>
+	<a href="http://leig.github.io/tag/git.html">git</a>
         /
-	<a href="/tag/sae.html">sae</a>
+	<a href="http://leig.github.io/tag/sae.html">sae</a>
         /
-	<a href="/tag/wechat.html">wechat</a>
+	<a href="http://leig.github.io/tag/wechat.html">wechat</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
@@ -310,7 +310,7 @@ $ git push sae master:1
             var disqus_shortname = 'lei-gong.disqus.com'; // required: replace example with your forum shortname
 
                     var disqus_identifier = 'deploy-wechat-platform-on-sae';
-                var disqus_url = '/deploy-wechat-platform-on-sae.html';
+                var disqus_url = 'http://leig.github.io/deploy-wechat-platform-on-sae.html';
 
             var disqus_config = function () {
                 this.language = "en";
@@ -349,7 +349,7 @@ $ git push sae master:1
 
 
 
-            <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+            <li class="list-group-item"><a href="http://leig.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                 </ul>
             </li>
@@ -371,13 +371,13 @@ $ git push sae master:1
       </div>
    </div>
 </footer>
-<script src="/theme/js/jquery.min.js"></script>
+<script src="http://leig.github.io/theme/js/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/theme/js/bootstrap.min.js"></script>
+<script src="http://leig.github.io/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="/theme/js/respond.min.js"></script>
+<script src="http://leig.github.io/theme/js/respond.min.js"></script>
 
     <!-- Disqus -->
     <script type="text/javascript">
